@@ -55,27 +55,27 @@ There are many ad-hoc approaches you could take to version control. Git has a
 well-thought-out model that enables all the nice features of version control,
 like maintaining history, supporting branches, and enabling collaboration.
 
-## Snapshots
+## Снэпшоты
 
-Git models the history of a collection of files and folders within some
-top-level directory as a series of snapshots. In Git terminology, a file is
-called a "blob", and it's just a bunch of bytes. A directory is called a
-"tree", and it maps names to blobs or trees (so directories can contain other
-directories). A snapshot is the top-level tree that is being tracked. For
-example, we might have a tree as follows:
+История файлов и каталогов проекта (корневого каталога) в Git представляется
+серией снэпшотов (снимков данных в различные моменты времени). В терминологии
+Git файл называется "blob", который является просто набором байтов. Каталог
+называется "tree" (деревом) и он сопоставляет имена файлам и каталогам (таким
+образом каталоги могут содержать другие каталоги). Снимок - состояние корневого
+каталога под управлением системы контроля версий. Рассмотрим следующий пример:
 
 ```
-<root> (tree)
+<корень> (tree)
 |
 +- foo (tree)
 |  |
-|  + bar.txt (blob, contents = "hello world")
+|  + bar.txt (blob, состоит из = "hello world")
 |
-+- baz.txt (blob, contents = "git is wonderful")
++- baz.txt (blob, состоит из = "git is wonderful")
 ```
 
-The top-level tree contains two elements, a tree "foo" (that itself contains
-one element, a blob "bar.txt"), and a blob "baz.txt".
+Корневой каталог содержит два элемета: каталог "foo" (который в свою очередь
+состоит из файла "bar.txt"), и файла "baz.txt".
 
 ## Modeling history: relating snapshots
 
