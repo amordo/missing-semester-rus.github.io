@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Version Control (Git)"
+title: "Контроль версий (Гит)"
 date: 2020-01-22
 ready: true
 video:
@@ -8,46 +8,49 @@ video:
   id: 2sjqTHE0zok
 ---
 
-Version control systems (VCSs) are tools used to track changes to source code
-(or other collections of files and folders). As the name implies, these tools
-help maintain a history of changes; furthermore, they facilitate collaboration.
-VCSs track changes to a folder and its contents in a series of snapshots, where
-each snapshot encapsulates the entire state of files/folders within a top-level
-directory. VCSs also maintain metadata like who created each snapshot, messages
-associated with each snapshot, and so on.
+Системы контроля версий (СКВ, version control systems) - это инструменты, 
+используемые для отслеживания изменений в исходном коде (или других файлах и 
+папках) и управления ими. Как и подразумевает название, СКВ обеспечивают 
+хранение истории изменений; более того, они облегчают сотрудничество 
+разработчиков.  СКВ записывают изменения в папку, и ее содержимым являются 
+серии снимков, где каждый снимок (snapshot) включает состояние всех файлов/папок 
+корневой директории. СКВ также хранят метаданные, например, кто создал данный 
+снимоки т.д.
 
-Why is version control useful? Even when you're working by yourself, it can let
-you look at old snapshots of a project, keep a log of why certain changes were
-made, work on parallel branches of development, and much more. When working
-with others, it's an invaluable tool for seeing what other people have changed,
-as well as resolving conflicts in concurrent development.
+Почему системы контроля полезны? Даже когда Вы работаете самостоятельно, 
+они позволяют Вам посмотреть на более поздние снимки проекта, вести учет, 
+почему те или иные изменения были сделаны, работать сразу в нескольких 
+ветках и многое другое. Когда Вы работаете в команде, это бесценный инструмент 
+для отслеживания изменений, внесенных другими разработчиками, а также разрешения 
+конфликтов, возникающих в процессе параллельной разработки. 
 
-Modern VCSs also let you easily (and often automatically) answer questions
-like:
+Современные СКВ предоставляют возможность легко (и часто автоматически) ответить 
+на такие вопросы, как:
+- Кто написал данный модуль?
+- Когда эта конкретная строка этого конкретного файла была изменена? Кем? Почему?
+- В ходе последних 1000 изменений, когда/почему определенный юнит тест начал падать?
 
-- Who wrote this module?
-- When was this particular line of this particular file edited? By whom? Why
-  was it edited?
-- Over the last 1000 revisions, when/why did a particular unit test stop
-working?
-
-While other VCSs exist, **Git** is the de facto standard for version control.
-This [XKCD comic](https://xkcd.com/1597/) captures Git's reputation:
+Несмотря на существование других СКВ, **Git** де факто является стандартом и данный 
+[XKCD комикс](https://xkcd.com/1597/) отражает его репутацию. 
 
 ![xkcd 1597](https://imgs.xkcd.com/comics/git.png)
 
-Because Git's interface is a leaky abstraction, learning Git top-down (starting
-with its interface / command-line interface) can lead to a lot of confusion.
-It's possible to memorize a handful of commands and think of them as magic
-incantations, and follow the approach in the comic above whenever anything goes
-wrong.
+- Это гит. Он отражает совместную работу над проектом в виде чудесного дерева.
+- Здорово, как мы это используем?
+- Ни малейшего представления не имею. Просто запомни эти команды и напиши их 
+для синхронизации. Если будут ошибки, сохрани свою работу где-то в другом месте, 
+удали проект и загрузи новую версию.
 
-While Git admittedly has an ugly interface, its underlying design and ideas are
-beautiful. While an ugly interface has to be _memorized_, a beautiful design
-can be _understood_. For this reason, we give a bottom-up explanation of Git,
-starting with its data model and later covering the command-line interface.
-Once the data model is understood, the commands can be better understood, in
-terms of how they manipulate the underlying data model.
+Так как интерфейс гита является некоторой абстракцией, изучение его “сверху вниз” 
+(начиная с его интерфейса) может привести в замешательство. Можно конечно запомнить
+полезные команды и думать о них как о волшебных заклинаниях, следуя примеру из 
+комикса каждый раз, как что-то пойдет не так. 
+
+Несмотря на ужасный интерфейс, дизайн и идеи, лежащие в основе гита, прекрасны.
+И если интерфейс придется _запомнить_, идею можно _понять_. Для этого мы даем 
+объяснение гита “снизу вверх”, начиная с его модели данных и позднее касаясь 
+интерфейса командной строки. Когда мы разберемся с моделью данных, Вам будет 
+легче понять, как команды взаимодействуют с ней. 
 
 # Git's data model
 
