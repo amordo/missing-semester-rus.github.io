@@ -80,25 +80,21 @@ video:
 Корневой каталог содержит два элемета: каталог "foo" (который в свою очередь
 состоит из файла "bar.txt") и файл "baz.txt".
 
-## Структура истории изменений; связь снимков
+## Структура истории изменений; связь снэпшотов
 
 Каким образом СКВ должна связывать снимки? Примером простого подхода может
 служить линейная упорядоченность снимков в хронологическом порядке. По многим
 причинам Гит не использует подобный подход.
 
-In Git, a history is a directed acyclic graph (DAG) of snapshots. That may
-sound like a fancy math word, but don't be intimidated. All this means is that
-each snapshot in Git refers to a set of "parents", the snapshots that preceded
-it. It's a set of parents rather than a single parent (as would be the case in
-a linear history) because a snapshot might descend from multiple parents, for
-example, due to combining (merging) two parallel branches of development.
-
 В Гите история представляется ориентированным ациклическим графом снимков. Возможно
 звучит заумно, но не надо пугаться. Это лишь значит, что каждый снимок в гите имеет
-набор "родителей", снимков, предшествующих рассматриваемому.
+набор "родителей", снимков, предшествующих рассматриваемому. Это набор родителей,
+а не один (как было бы в случае линейной истории), потому что снэпшот может быть
+результатом нескольких родителей, как в случае соединения (сливания) двух параллельных
+веток разработки.
 
-Git calls these snapshots "commit"s. Visualizing a commit history might look
-something like this:
+В гите такие снэпшоты называются коммитами. Представление истории коммитов может
+выглядеть следующим образом:
 
 ```
 o <-- o <-- o <-- o
@@ -107,14 +103,13 @@ o <-- o <-- o <-- o
               --- o <-- o
 ```
 
-In the ASCII art above, the `o`s correspond to individual commits (snapshots).
-The arrows point to the parent of each commit (it's a "comes before" relation,
-not "comes after"). After the third commit, the history branches into two
-separate branches. This might correspond to, for example, two separate features
-being developed in parallel, independently from each other. In the future,
-these branches may be merged to create a new snapshot that incorporates both of
-the features, producing a new history that looks like this, with the newly
-created merge commit shown in bold:
+В ASCII рисунке выше `o` является некоторым коммитом (снэпшотом). Стрелки указывают
+на родителей каждого из коммитов (изображено отношение "предшествует", не "следует").
+После третьего коммита история делится на две ветки. Такой сценарий возможен, когда,
+к примеру, две новые функциональности разрабатываются параллельно, независимо друг
+от друга. В будущем эти ветки могут быть объеденины чтобы сделать снимок, который
+включает в себя оба новшества, создавая новую историю с merge-коммитом, выделенным
+жирным ниже:
 
 <pre class="highlight">
 <code>
@@ -125,10 +120,9 @@ o <-- o <-- o <-- o <---- <strong>o</strong>
 </code>
 </pre>
 
-Commits in Git are immutable. This doesn't mean that mistakes can't be
-corrected, however; it's just that "edits" to the commit history are actually
-creating entirely new commits, and references (see below) are updated to point
-to the new ones.
+Коммиты в Гите неизменяемы. Это не значит, что ошибки не могут быть исправлены; это
+лишь означает, что "изменения" истории коммитов есть создание новых коммитов, и
+ссылки (описанные далее) обновляются, указывая на новые коммиты.
 
 ## Data model, as pseudocode
 
