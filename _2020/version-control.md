@@ -80,11 +80,11 @@ video:
 Корневой каталог содержит два элемета: каталог "foo" (который в свою очередь
 состоит из файла "bar.txt") и файл "baz.txt".
 
-## Modeling history: relating snapshots
+## Структура истории изменений; связь снимков
 
-How should a version control system relate snapshots? One simple model would be
-to have a linear history. A history would be a list of snapshots in time-order.
-For many reasons, Git doesn't use a simple model like this.
+Каким образом СКВ должна связывать снимки? Примером простого подхода может
+служить линейная упорядоченность снимков в хронологическом порядке. По многим
+причинам Гит не использует подобный подход.
 
 In Git, a history is a directed acyclic graph (DAG) of snapshots. That may
 sound like a fancy math word, but don't be intimidated. All this means is that
@@ -92,6 +92,10 @@ each snapshot in Git refers to a set of "parents", the snapshots that preceded
 it. It's a set of parents rather than a single parent (as would be the case in
 a linear history) because a snapshot might descend from multiple parents, for
 example, due to combining (merging) two parallel branches of development.
+
+В Гите история представляется ориентированным ациклическим графом снимков. Возможно
+звучит заумно, но не надо пугаться. Это лишь значит, что каждый снимок в гите имеет
+набор "родителей", снимков, предшествующих рассматриваемому.
 
 Git calls these snapshots "commit"s. Visualizing a commit history might look
 something like this:
