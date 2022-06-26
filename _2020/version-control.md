@@ -124,18 +124,18 @@ o <-- o <-- o <-- o <---- <strong>o</strong>
 лишь означает, что "изменения" истории коммитов есть создание новых коммитов, и
 ссылки (описанные далее) обновляются, указывая на новые коммиты.
 
-## Data model, as pseudocode
+## Псевдокод модели данных
 
-It may be instructive to see Git's data model written down in pseudocode:
+Может стать яснее, если взглянуть на модель данных Гита описанных в псевдокоде:
 
 ```
-// a file is a bunch of bytes
+// файл - это набор байтов
 type blob = array<byte>
 
-// a directory contains named files and directories
+// каталог содержит именованные каталоги и файлы
 type tree = map<string, tree | blob>
 
-// a commit has parents, metadata, and the top-level tree
+// коммит содержит родителя, метаданные и корневой каталог
 type commit = struct {
     parents: array<commit>
     author: string
@@ -144,7 +144,7 @@ type commit = struct {
 }
 ```
 
-It's a clean, simple model of history.
+Так выглядит простая и ясная модель истории.
 
 ## Objects and content-addressing
 
