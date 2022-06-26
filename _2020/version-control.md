@@ -263,9 +263,11 @@ area".
 
 # Git command-line interface
 
-To avoid duplicating information, we're not going to explain the commands below
-in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
-for more information, or watch the lecture video.
+# Работа с Гитом через командную строку
+
+Чтобы не повторяться, мы не будем объяснять приведенные далее команды в деталях.
+Посмотрите лекцию или воспользуйтесь крайне рекомендуемым
+[Pro Git](https://git-scm.com/book/en/v2) за подробностями.
 
 ## Basics
 
