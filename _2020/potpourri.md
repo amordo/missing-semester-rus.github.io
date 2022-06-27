@@ -376,32 +376,28 @@ programming environment that's great for doing math-oriented programming.
 
 ## GitHub
 
-[GitHub](https://github.com/) is one of the most popular platforms for
-open-source software development. Many of the tools we've talked about in this
-class, from [vim](https://github.com/vim/vim) to
-[Hammerspoon](https://github.com/Hammerspoon/hammerspoon), are hosted on
-GitHub. It's easy to get started contributing to open-source to help improve
-the tools that you use every day.
+[GitHub](https://github.com/) - одна из самых популярных платформ для разработки
+открытого программного обеспечения (open-source software). Множество инструментов,
+о которых мы говорили, от [vim](https://github.com/vim/vim) до [Hammerspoon](https://github.com/Hammerspoon/hammerspoon),
+размещены на GitHub. Довольно легко начать вносить свой вклад в open-source, чтобы
+сделать лучше инструменты, которыми мы пользуемся ежедневно. 
 
-There are two primary ways in which people contribute to projects on GitHub:
+Есть два главных способа участия в проектах на GitHub:
 
-- Creating an
-[issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
-This can be used to report bugs or request a new feature. Neither of these
-involves reading or writing code, so it can be pretty lightweight to do.
-High-quality bug reports can be extremely valuable to developers. Commenting on
-existing discussions can be helpful too.
-- Contribute code through a [pull
+- Создать [issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
+Таким образом можно сообщить о баге или запросить новую функцию. Ни то, ни другое
+не требует чтения или написания кода, так что сделать это довольно легко. Качественные
+отчеты о багах могут оказаться очень ценными для разработчиков. Участие в уже существующих
+обсуждениях тоже может быть полезным.
+- Внести свой код с помощью [pull
 request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-This is generally more involved than creating an issue. You can
-[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
-a repository on GitHub, clone your fork, create a new branch, make some changes
-(e.g. fix a bug or implement a feature), push the branch, and then [create a
-pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-After this, there will generally be some back-and-forth with the project
-maintainers, who will give you feedback on your patch. Finally, if all goes
-well, your patch will be merged into the upstream repository. Often times,
-larger projects will have a contributing guide, tag beginner-friendly issues,
-and some even have mentorship programs to help first-time contributors become
-familiar with the project.
+Это естественно требует большего вовлечения в проект, нежели issue. Вы можете скопировать 
+[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) 
+репозиторий на GitHub, клонировать уже Вашу копию локально, создать новую ветку, 
+внеси изменения (например,исправить баг или добавить фунционал), запушить ветку и 
+создать [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+Далее последует некоторое обсуждение с разработчиками проекта, и Вы получите
+фидбек на Ваши изменения. В итоге, если все сложится благополучно, Ваши изменения
+будут смерджены в оргинальный (upstream) репозиторий. Как правило, у больших проектов
+существует гайд для участия, проблемы (issues) с пометкой beginner-friendly (для новичков),
+а некоторые даже имеют менторские программы, помогающие новичкам ознакомиться с проектом.
