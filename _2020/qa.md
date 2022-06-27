@@ -11,7 +11,7 @@ video:
 For the last lecture, we answered questions that the students submitted:
 
 - [Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc ](#any-recommendations-on-learning-operating-systems-related-topics-like-processes-virtual-memory-interrupts-memory-management-etc)
-- [What are some of the tools you'd prioritize learning first?](#what-are-some-of-the-tools-youd-prioritize-learning-first)
+- [С чего начать обучение?](#с-чего-начать-обучение)
 - [When do I use Python versus a Bash scripts versus some other language?](#when-do-i-use-python-versus-a-bash-scripts-versus-some-other-language)
 - [What is the difference between `source script.sh` and `./script.sh`](#what-is-the-difference-between-source-scriptsh-and-scriptsh)
 - [What are the places where various packages and tools are stored and how does referencing them work? What even is `/bin` or `/lib`?](#what-are-the-places-where-various-packages-and-tools-are-stored-and-how-does-referencing-them-work-what-even-is-bin-or-lib)
@@ -40,14 +40,14 @@ Some good resources to learn about this topic:
 - Other guides like [Writing an OS in Rust](https://os.phil-opp.com/) where people implement a kernel step by step in various languages, mostly for teaching purposes. 
 
 
-## What are some of the tools you'd prioritize learning first?
+## С чего начать обучение?
 
-Some topics worth prioritizing:
-
-- Learning how to use your keyboard more and your mouse less. This can be through keyboard shortcuts, changing interfaces, &c.
-- Learning your editor well. As a programmer most of your time is spent editing files so it really pays off to learn this skill well.
-- Learning how to automate and/or simplify repetitive tasks in your workflow because the time savings will be enormous...
-- Learning about version control tools like Git and how to use it in conjunction with GitHub to collaborate in modern software projects.
+Темы/навыки, с которых стоит начать:
+- Научиться пользоваться клавиатурой больше, чем мышью. Это можно сделать с помощью шорткатов, изменения интерфейса и т.д.
+- Научиться пользоваться редактором. Так как программист проводит большую часть времени редактируя файлы, это реально сыграет Вам на руку.
+- Научиться автоматизировать и/или упрощать повторяющиеся рабочие действия, так как это сэкономит Вам очень много времени...
+- Научиться пользоваться системой контроля версий, например Git, и как использовать ее в связке с GitHub, чтобы принимать участие в современных
+проектах.
 
 ## When do I use Python versus a Bash scripts versus some other language?
 
