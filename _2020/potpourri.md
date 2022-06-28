@@ -48,7 +48,7 @@ video:
 Некоторые ресурсы для ознакомления с данной темой:
 - macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) или [BetterTouchTool](https://folivora.ai/)
 - Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) или [Autokey](https://github.com/autokey/autokey)
-- Windows - Builtin in Control Panel, [AutoHotkey](https://www.autohotkey.com/) или [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
+- Windows - [AutoHotkey](https://www.autohotkey.com/) или [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
 - QMK - Если Ваша клавиатура поддерживает кастомную прошивку, можно использовать [QMK](https://docs.qmk.fm/) для настройки самого устройства, так что Ваши переопредления будут работать для любого ПК, с которым Вы используете данную клавиатуру. 
 
 ## Daemons
