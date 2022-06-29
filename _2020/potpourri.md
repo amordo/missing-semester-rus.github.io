@@ -14,7 +14,7 @@ video:
 - [Daemons](#daemons)
 - [FUSE](#fuse)
 - [Backups](#backups)
-- [APIs](#apis)
+- [API](#api)
 - [Common command-line flags/patterns](#common-command-line-flagspatterns)
 - [Оконные менеджеры](#оконные-менеджеры)
 - [VPNs](#vpns)
@@ -130,7 +130,7 @@ Having an offline copy of this information is the way to go, and you can find on
 For a more detailed explanation, see 2019's lecture notes on [Backups](/2019/backups).
 
 
-## APIs
+## API
 
 We've talked a lot in this class about using your computer more
 efficiently to accomplish _local_ tasks, but you will find that many of
@@ -139,6 +139,8 @@ will have "APIs" that let you programmatically access their data. For
 example, the US government has an API that lets you get weather
 forecasts, which you could use to easily get a weather forecast in your
 shell.
+
+На этом уроке мы много говорили о том, как использовать компьютер эффективно при решении _локальных_ задач. Вы также обнаружите, что многие из этих уроков применимы и при работе в сети Интернет. Большинство онлайн-сервисов предоставляют "API", которые позволяют получить доступ к данным сервисов "программно". Например, правительство США предоставляет API, с помощью которого можно узнать прогноз погоды, таким образом вы можете с легкостью получить данные в командной оболочке (shell).
 
 Most of these APIs have a similar format. They are structured URLs,
 often rooted at `api.service.com`, where the path and query parameters
