@@ -14,10 +14,10 @@ video:
 - [Daemons](#daemons)
 - [FUSE](#fuse)
 - [Backups](#backups)
-- [API](#api)
+- [APIs](#apis)
 - [Common command-line flags/patterns](#common-command-line-flagspatterns)
 - [Оконные менеджеры](#оконные-менеджеры)
-- [VPNs](#vpns)
+- [VPN](#vpn)
 - [Markdown](#markdown)
 - [Hammerspoon (desktop automation on macOS)](#hammerspoon-desktop-automation-on-macos)
 - [Booting + Live USBs](#booting--live-usbs)
@@ -130,39 +130,40 @@ Having an offline copy of this information is the way to go, and you can find on
 For a more detailed explanation, see 2019's lecture notes on [Backups](/2019/backups).
 
 
-## API
+## APIs
 
-На этом уроке мы много говорили о том, как использовать компьютер эффективно при
-решении _локальных_ задач. Вы также обнаружите, что многие из этих уроков
-применимы и при работе в сети Интернет. Большинство онлайн-сервисов
-предоставляют "API", которые позволяют получить доступ к данным сервисов
-"программно". Например, правительство США предоставляет API, с помощью которого
-можно узнать прогноз погоды, таким образом вы можете с легкостью получить данные
-в командной оболочке (shell).
+We've talked a lot in this class about using your computer more
+efficiently to accomplish _local_ tasks, but you will find that many of
+these lessons also extend to the wider internet. Most services online
+will have "APIs" that let you programmatically access their data. For
+example, the US government has an API that lets you get weather
+forecasts, which you could use to easily get a weather forecast in your
+shell.
 
-Большинство API имеют схожий между собой формат. Это структурированные URL-адреса,
-часто расположенные на `api.<сервис>.com`, в которых путь и параметры запроса указывают,
-какие вернуть данные или какое выполнить действие. Например, чтобы узнать
-прогноз погоды некоторого местоположения в США, нужно отправить GET запрос
-(например, с помощью утилиты `curl`) на https://api.weather.gov/points/42.3604,-71.094.
-Сам ответ содержит множество других URL-адресов, которые позволяют получить
-конкретные прогнозы для указанного региона. Обычно ответы форматируются в JSON,
-который затем можно передать утилите типа [`jq`](https://stedolan.github.io/jq/),
-чтобы извлечь интересующую информацию.
+Most of these APIs have a similar format. They are structured URLs,
+often rooted at `api.service.com`, where the path and query parameters
+indicate what data you want to read or what action you want to perform.
+For the US weather data for example, to get the forecast for a
+particular location, you issue GET request (with `curl` for example) to
+https://api.weather.gov/points/42.3604,-71.094. The response itself
+contains a bunch of other URLs that let you get specific forecasts for
+that region. Usually, the responses are formatted as JSON, which you can
+then pipe through a tool like [`jq`](https://stedolan.github.io/jq/) to
+massage into what you care about.
 
-Некоторые API требуют аутентификации, обычно принимающей форму секретного _токена_
-(token), который необходимо включить в запрос. Прочтите документацию API сервиса,
-который собираетесь использовать, чтобы узнать используемую технологию аутентификации.
-"[OAuth](https://www.oauth.com/)" — протокол, который будет вам часто встречаться.
-По своей сути OAuth — это способ предоставить токены, которые могут действовать
-"от вашего имени" в рассматриваемом сервисе для выполнения определенных задач.
-Имейте в виду, что эти токены являются _секретными_, и каждый, кто получит доступ
-к вашему токену, сможет совершать любые действия, использующие токен, под _вашей_
-учетной записью!
+Some APIs require authentication, and this usually takes the form of
+some sort of secret _token_ that you need to include with the request.
+You should read the documentation for the API to see what the particular
+service you are looking for uses, but "[OAuth](https://www.oauth.com/)"
+is a protocol you will often see used. At its heart, OAuth is a way to
+give you tokens that can "act as you" on a given service, and can only
+be used for particular purposes. Keep in mind that these tokens are
+_secret_, and anyone who gains access to your token can do whatever the
+token allows under _your_ account!
 
-[IFTTT](https://ifttt.com/) — сайт и сервис, завязанный на идее использования API.
-Он позволяет объединять события различных сервисов в произвольную цепочку. Стоит
-взглянуть!
+[IFTTT](https://ifttt.com/) is a website and service centered around the
+idea of APIs — it provides integrations with tons of services, and lets
+you chain events from them in nearly arbitrary ways. Give it a look!
 
 ## Common command-line flags/patterns
 
@@ -214,43 +215,41 @@ tmux. С плиточным менеджером экран всегда зап�
 случае с панелями tmux, по окнам можно перемещаться, изменять их размер
 переставлять, используя лишь клавиатуру. Их стоит попробовать!
 
-## VPNs
+## VPN
 
-VPNs are all the rage these days, but it's not clear that's for [any
-good reason](https://gist.github.com/joepie91/5a9909939e6ce7d09e29). You
-should be aware of what a VPN does and does not get you. A VPN, in the
-best case, is _really_ just a way for you to change your internet
-service provider as far as the internet is concerned. All your traffic
-will look like it's coming from the VPN provider instead of your "real"
-location, and the network you are connected to will only see encrypted
-traffic.
+VPN (Virtual Private Network) нынче в моде, но не совсем ясно, существует
+ли вообще [причина для этого] (https://gist.github.com/joepie91/5a9909939e6ce7d09e29).
+Вы должны быть осведомлены о том, что VPN делает и что не делает. VPN в 
+лучшем случае _реально_ просто способ поменять провайдера, и весь Ваш трафик
+будет выглядеть так, как будто он исходит от VPN провайдера вместо Вашей
+"реальной" локации, и сеть, к которой Вы подключены, будет видеть только
+этот "зашифрованный" трафик.
 
-While that may seem attractive, keep in mind that when you use a VPN,
-all you are really doing is shifting your trust from you current ISP to
-the VPN hosting company. Whatever your ISP _could_ see, the VPN provider
-now sees _instead_. If you trust them _more_ than your ISP, that is a
-win, but otherwise, it is not clear that you have gained much. If you
-are sitting on some dodgy unencrypted public Wi-Fi at an airport, then
-maybe you don't trust the connection much, but at home, the trade-off is
-not quite as clear.
+Несмотря на привлекательность данной идеи, держите в уме, что когда Вы
+используете VPN, все Ваши действия доверяются не Вашему текущему интернет-
+провайдеру, а провайдеру VPN. Все, что может увидеть Ваш интернет-провайдер,
+теперь _вместо_ него видит провайдер VPN. И только если Вы доверяете ему 
+_больше_, чем интернет-провайдеру, вы в выигрыше, а в противном случае
+результат для Вас сомнителен. Если Вы подключены к какому-нибудь сомнительному
+публичному Wi-Fi в аэропорту, тогда скорее всего Вы не особо доверяете соединению,
+но будучи дома стоит подумать дважды. 
 
-You should also know that these days, much of your traffic, at least of
-a sensitive nature, is _already_ encrypted through HTTPS or TLS more
-generally. In that case, it usually matters little whether you are on
-a "bad" network or not -- the network operator will only learn what
-servers you talk to, but not anything about the data that is exchanged.
+Также Вы должны знать, что в наши дни большая часть трафика, по крайней
+мере деликатного характера, _уже_ зашифрована с помощью HTTPS или TLS. 
+И поэтому от того, на "плохой" Вы сети или нет, мало что. зависит -- оператор
+сети будет знать только о том, с какими серверами Вы взаимодействуете, но
+не о самих данных, которыми Вы обмениваетесь. 
 
-Notice that I said "in the best case" above. It is not unheard of for
-VPN providers to accidentally misconfigure their software such that the
-encryption is either weak or entirely disabled. Some VPN providers are
-malicious (or at the very least opportunist), and will log all your
-traffic, and possibly sell information about it to third parties.
-Choosing a bad VPN provider is often worse than not using one in the
-first place.
+Обратите внимание, Я сказал "в лучшем случае" выше. VPN провайдеры совсем
+не гнушаются настраивать свой софт таким образом, чтобы шифрование было 
+слабее или даже совсем отсутствовало. Некоторые VPN провайдеры попросту 
+злоумышленники (или по крайней мере, оппортунисты), и будут записывать весь
+Ваш трафик и вероятно продавать информацию третьим лицам. Выбрать плохого
+VPN провайдера обычно намного хуже, чем вообще не использовать VPN.
 
-In a pinch, MIT [runs a VPN](https://ist.mit.edu/vpn) for its students,
-so that may be worth taking a look at. Also, if you're going to roll
-your own, give [WireGuard](https://www.wireguard.com/) a look.
+В крайнем случае, у MIT есть [свой VPN](https://ist.mit.edu/vpn) для студентов,
+так что возможно Вам стоит взглянуть. Также если Вы собрались запустить свой,
+обратите внимание на [WireGuard](https://www.wireguard.com/).
 
 ## Markdown
 
@@ -375,28 +374,32 @@ programming environment that's great for doing math-oriented programming.
 
 ## GitHub
 
-[GitHub](https://github.com/) - одна из самых популярных платформ для разработки
-открытого программного обеспечения (open-source software). Множество инструментов,
-о которых мы говорили, от [vim](https://github.com/vim/vim) до [Hammerspoon](https://github.com/Hammerspoon/hammerspoon),
-размещены на GitHub. Довольно легко начать вносить свой вклад в open-source, чтобы
-сделать лучше инструменты, которыми мы пользуемся ежедневно. 
+[GitHub](https://github.com/) is one of the most popular platforms for
+open-source software development. Many of the tools we've talked about in this
+class, from [vim](https://github.com/vim/vim) to
+[Hammerspoon](https://github.com/Hammerspoon/hammerspoon), are hosted on
+GitHub. It's easy to get started contributing to open-source to help improve
+the tools that you use every day.
 
-Есть два главных способа участия в проектах на GitHub:
+There are two primary ways in which people contribute to projects on GitHub:
 
-- Создать [issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
-Таким образом можно сообщить о баге или запросить новую функцию. Ни то, ни другое
-не требует чтения или написания кода, так что сделать это довольно легко. Качественные
-отчеты о багах могут оказаться очень ценными для разработчиков. Участие в уже существующих
-обсуждениях тоже может быть полезным.
-- Внести свой код с помощью [pull
+- Creating an
+[issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
+This can be used to report bugs or request a new feature. Neither of these
+involves reading or writing code, so it can be pretty lightweight to do.
+High-quality bug reports can be extremely valuable to developers. Commenting on
+existing discussions can be helpful too.
+- Contribute code through a [pull
 request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-Это естественно требует большего вовлечения в проект, нежели issue. Вы можете скопировать 
-[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) 
-репозиторий на GitHub, клонировать уже Вашу копию локально, создать новую ветку, 
-внеси изменения (например,исправить баг или добавить фунционал), запушить ветку и 
-создать [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-Далее последует некоторое обсуждение с разработчиками проекта, и Вы получите
-фидбек на Ваши изменения. В итоге, если все сложится благополучно, Ваши изменения
-будут смерджены в оргинальный (upstream) репозиторий. Как правило, у больших проектов
-существует гайд для участия, проблемы (issues) с пометкой beginner-friendly (для новичков),
-а некоторые даже имеют менторские программы, помогающие новичкам ознакомиться с проектом.
+This is generally more involved than creating an issue. You can
+[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+a repository on GitHub, clone your fork, create a new branch, make some changes
+(e.g. fix a bug or implement a feature), push the branch, and then [create a
+pull
+request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+After this, there will generally be some back-and-forth with the project
+maintainers, who will give you feedback on your patch. Finally, if all goes
+well, your patch will be merged into the upstream repository. Often times,
+larger projects will have a contributing guide, tag beginner-friendly issues,
+and some even have mentorship programs to help first-time contributors become
+familiar with the project.
