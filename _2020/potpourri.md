@@ -15,7 +15,7 @@ video:
 - [FUSE](#fuse)
 - [Backups](#backups)
 - [APIs](#apis)
-- [Common command-line flags/patterns](#common-command-line-flagspatterns)
+- [Распространенные флаги и паттерны при работе в командной строке](#распространенные-флаги-и-паттерны-при-работе-в-командной-строке)
 - [Оконные менеджеры](#оконные-менеджеры)
 - [VPN](#vpn)
 - [Markdown](#markdown)
@@ -165,37 +165,39 @@ token allows under _your_ account!
 idea of APIs — it provides integrations with tons of services, and lets
 you chain events from them in nearly arbitrary ways. Give it a look!
 
-## Common command-line flags/patterns
+## Распространенные флаги и паттерны при работе в командной строке
 
-Command-line tools vary a lot, and you will often want to check out
-their `man` pages before using them. They often share some common
-features though that can be good to be aware of:
+Инструменты командной строки могут различаться, и Вы скорее всего захотите 
+посмотреть их `man`страницу перед использованием. Как правило, у них есть
+общие черты, о которых было бы полезно знать:
 
- - Most tools support some kind of `--help` flag to display brief usage
-   instructions for the tool.
- - Many tools that can cause irrevocable change support the notion of a
-   "dry run" in which they only print what they _would have done_, but
-   do not actually perform the change. Similarly, they often have an
-   "interactive" flag that will prompt you for each destructive action.
- - You can usually use `--version` or `-V` to have the program print its
-   own version (handy for reporting bugs!).
- - Almost all tools have a `--verbose` or `-v` flag to produce more
-   verbose output. You can usually include the flag multiple times
-   (`-vvv`) to get _more_ verbose output, which can be handy for
-   debugging. Similarly, many tools have a `--quiet` flag for making it
-   only print something on error.
- - In many tools, `-` in place of a file name means "standard input" or
-   "standard output", depending on the argument.
- - Possibly destructive tools are generally not recursive by default,
-   but support a "recursive" flag (often `-r`) to make them recurse.
- - Sometimes, you want to pass something that _looks_ like a flag as a
-   normal argument. For example, imagine you wanted to remove a file
-   called `-r`. Or you want to run one program "through" another, like
-   `ssh machine foo`, and you want to pass a flag to the "inner" program
-   (`foo`). The special argument `--` makes a program _stop_ processing
-   flags and options (things starting with `-`) in what follows, letting
-   you pass things that look like flags without them being interpreted
-   as such: `rm -- -r` or `ssh machine --for-ssh -- foo --for-foo`.
+ - Большинство команд поддерживают в каком-то виде флаг `--help` для 
+   отображения кратких иструкций по использованию.
+ - Многие команды, которые могут вызвать необратимые изменения, поддерживают
+   концепцию "холостого запуска", в котором они сообщают только о том, что
+   _они сделали бы_, но реально не производят данные действия. Аналогично,
+   обычно они имеют "интерактивный" флаг, который спрашивает о каждом 
+   дестуктивном действии.
+ - Обычно можно использовать `--version` или `-V, чтобы программа вывела 
+   на экран свою версию (полезно для сообщений о багах!)
+ - Почти все инструменты имеют опцию `--verbose` или `-v` для более 
+   развернутого вывода. Вы можете включать флаг несколько раз (`-vvv`)
+   для еще _более_ полного вывода, что может быть применено для отладки. 
+   Аналогично, многие команды имеют опцию `--quiet` для вывода только в случае 
+   каких-то ошибок.
+ - Во многих командах `-` вместо имени файла обозначает "стандартный ввод" 
+   или "стандартный вывод", в зависимости от аргумента.
+ - Деструктивные команды в основной массе не рекурсивны по дефолту, но 
+   поддерживают "рекурсивный" флаг (обычно `-r`), чтобы сделать их
+   рекурсивными.
+ - Иногда Вам нужно передать что-то, что _выглядит_ как флаг, как обычный
+   аргумент. Например, представьте, что Вы хотели бы удалить файл с названием
+   `-r`. Или Вы хотели бы запустить одну программу "через" другую по типу 
+   `ssh machine foo` и передать флаг внутренней программе (`foo`).
+   Специальный аргумент `--` заставляет программу _остановить_ обработку 
+   флагов и опций (начинающихся с `-`) в следующем за ним тексте, что 
+   позволяет передать что-то, выглядящее как флаги, без их интерпретации, как
+   например: `rm -- -r` или `ssh machine --for-ssh -- foo --for-foo`.
 
 ## Оконные менеджеры
 
