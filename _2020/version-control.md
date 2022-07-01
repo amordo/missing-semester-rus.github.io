@@ -190,16 +190,16 @@ baz.txt с помощью `git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894a
 git is wonderful
 ```
 
-## References
+## Ссылки 
 
-Now, all snapshots can be identified by their SHA-1 hashes. That's inconvenient,
-because humans aren't good at remembering strings of 40 hexadecimal characters.
+Итак, все спепшоты могут быть идентифицированы при помощи SHA-1 хэшей. Это неудобно,
+ведь люди не слишком-то хороши в запоминании строк из 40 шестнадцатеричных символов.
 
-Git's solution to this problem is human-readable names for SHA-1 hashes, called
-"references". References are pointers to commits. Unlike objects, which are
-immutable, references are mutable (can be updated to point to a new commit).
-For example, the `master` reference usually points to the latest commit in the
-main branch of development.
+Гит решил эту проблему созданием человекочитыаемых названий для SHA-1 хэшей, так 
+называемых ссылок. Ссылки - это указатели на коммиты. В отличие от неизменяемых 
+объектов ссылки изменяемы (могут быть обновлены для указания на новый коммит).
+Например, `master`(или `main`) как правило ссылается на последний коммит в главной 
+ветке разработки.
 
 ```
 references = map<string, string>
@@ -217,49 +217,49 @@ def load_reference(name_or_id):
         return load(name_or_id)
 ```
 
-With this, Git can use human-readable names like "master" to refer to a
-particular snapshot in the history, instead of a long hexadecimal string.
+Используя это, Гит может задействовать такие привычные для человека имена,
+как "master", для ссылки на определенный коммит в истории вместо длинной
+шестнадцатеричной строки.
 
-One detail is that we often want a notion of "where we currently are" in the
-history, so that when we take a new snapshot, we know what it is relative to
-(how we set the `parents` field of the commit). In Git, that "where we
-currently are" is a special reference called "HEAD".
+Есть один нюанс, часто мы хотим узнать "а где я сейчас нахожусь?" в истории, 
+чтобы при создании снэпшота мы знали, к чему он будет относиться (что будет в 
+поле "родители" у коммита). В Гите это "а где я сейчас нахожусь?" является
+специальной ссылкой под названием "HEAD".
 
-## Repositories
 
-Finally, we can define what (roughly) is a Git _repository_: it is the data
-`objects` and `references`.
+## Репозитории
 
-On disk, all Git stores are objects and references: that's all there is to Git's
-data model. All `git` commands map to some manipulation of the commit DAG by
-adding objects and adding/updating references.
+Наконец, мы можем определить что (приблизительно) такое Git _репозиторий_ : 
+это объекты и ссылки.
 
-Whenever you're typing in any command, think about what manipulation the
-command is making to the underlying graph data structure. Conversely, if you're
-trying to make a particular kind of change to the commit DAG, e.g. "discard
-uncommitted changes and make the 'master' ref point to commit `5d83f9e`", there's
-probably a command to do it (e.g. in this case, `git checkout master; git reset
+На диске Гит хранит объекты и ссылки - это все, что существует для модели
+данных Гита. Все `git` команды относятся к какой-нибудь манипуляции с DAG
+(directed acyclic grap, направленный ациклический граф) коммитов путем добавления
+нового объекта и добавления/обновления ссылок.
+
+Когда Вы пишете любую команду, подумайте какую манипуляцию она проводит с
+графовой структурой данных. И наоборот, если Вы хотите произвести какое-то 
+изменение над DAG коммитов, например, "отменить незакоммиченные изменения и
+перенести ссылку 'master' на коммит `5d83f9e`", вероятно существует команда, 
+чтобы это сделать (в данном случае `git checkout master; git reset
 --hard 5d83f9e`).
 
-# Staging area
+# Стейджинг
 
-This is another concept that's orthogonal to the data model, but it's a part of
-the interface to create commits.
+Еще одна концепция, по сути не относящаяся к модели данных, но являющаяся частью
+интерфейса для создания коммитов.
 
-One way you might imagine implementing snapshotting as described above is to have
-a "create snapshot" command that creates a new snapshot based on the _current
-state_ of the working directory. Some version control tools work like this, but
-not Git. We want clean snapshots, and it might not always be ideal to make a
-snapshot from the current state. For example, imagine a scenario where you've
-implemented two separate features, and you want to create two separate commits,
-where the first introduces the first feature, and the next introduces the
-second feature. Or imagine a scenario where you have debugging print statements
-added all over your code, along with a bugfix; you want to commit the bugfix
-while discarding all the print statements.
+Вы можете представлять себе реализацию процесса создания снимков как некоторую
+команду "создай снепшот", которая создает новый снепшот на основании _текущего
+состояния_ рабочей директории. Некоторые системы контроля версий так и делают, но
+не Гит. Мы хотим "чистые" снимки, и не всегда текущее состояние для этого подходит.
+Например, вообразите сценарий, где Вы реализовали два разных функционала, и Вы
+хотели бы создать для них два разных коммита. Или представьте, что у Вас по всему
+коду есть отладка с помощью print вместе с исправленной ошибкой, и Вы хотите 
+закоммитить это исправление без всех print'ов. 
 
-Git accommodates such scenarios by allowing you to specify which modifications
-should be included in the next snapshot through a mechanism called the "staging
-area".
+Гит приспособлен для таких сценариев: есть возможность включить в следующий коссит 
+нужные Вам изменения с помощью так называемого механизма "зона стейджинга".
 
 # Git command-line interface
 
