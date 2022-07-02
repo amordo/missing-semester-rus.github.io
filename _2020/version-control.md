@@ -35,11 +35,14 @@ video:
 
 ![xkcd 1597](https://imgs.xkcd.com/comics/git.png)
 
-( - Это гит. Он отражает совместную работу над проектом в виде чудесного дерева.
-- Здорово, как мы это используем?
-- Ни малейшего представления не имею. Просто запомни эти команды и напиши их 
+-- Это гит. Он отражает совместную работу над проектом в виде чудесной графовой структуры
+дерева.
+
+-- Здорово, как мы это используем?
+
+-- Ни малейшего представления не имею. Просто запомни эти команды и напиши их 
 для синхронизации. Если будут ошибки, сохрани свою работу где-то в другом месте, 
-удали проект и загрузи новую версию.)
+удали проект и загрузи новую версию.
 
 Так как интерфейс гита является некоторой абстракцией, изучение его “сверху вниз” 
 (начиная с его интерфейса) может привести в замешательство. Можно конечно запомнить
@@ -261,20 +264,16 @@ def load_reference(name_or_id):
 Гит приспособлен для таких сценариев: есть возможность включить в следующий коссит 
 нужные Вам изменения с помощью так называемого механизма "зона стейджинга".
 
-# Git command-line interface
-
 # Работа с Гитом через командную строку
 
 Чтобы не повторяться, мы не будем объяснять приведенные далее команды в деталях.
 Посмотрите лекцию или воспользуйтесь крайне рекомендуемым
 [Pro Git](https://git-scm.com/book/en/v2) за подробностями.
 
-## Basics
+## Основы
 
-{% comment %}
-
-The `git init` command initializes a new Git repository, with repository
-metadata being stored in the `.git` directory:
+Команда `git init` создает новый Гит репозиторий с метаданными, сохраненными
+в директории `.git`:
 
 ```console
 $ mkdir myproject
@@ -289,8 +288,8 @@ No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
-How do we interpret this output? "No commits yet" basically means our version
-history is empty. Let's fix that.
+Как мы можем интерпретировать данный вывод? "No commits yet" (пока нет коммитов) 
+обозначает, что наша история версий пуста. Давайте это исправим.
 
 ```console
 $ echo "hello, git" > hello.txt
@@ -311,20 +310,18 @@ $ git commit -m 'Initial commit'
  create mode 100644 hello.txt
 ```
 
-With this, we've `git add`ed a file to the staging area, and then `git
-commit`ed that change, adding a simple commit message "Initial commit". If we
-didn't specify a `-m` option, Git would open our text editor to allow us type a
-commit message.
+И вот, мы добавили файл в зону стейджинга и затем закоммитили это
+изменение, добавив коммиту простое сообщение "Initial commit". Если
+мы не укажем опцию `-m`, Гит откроет текстовый редактор, чтобы Вы
+написали сообщение коммита.
 
-Now that we have a non-empty version history, we can visualize the history.
-Visualizing the history as a DAG can be especially helpful in understanding the
-current status of the repo and connecting it with your understanding of the Git
-data model.
+Теперь когда у нас есть непустая история версий, мы можем ее визуализировать.
+Визуализация с помошью DAG может быть особенно полезна для понимания текущего
+статуса репозитория и связи с моделью данных Гита.
 
-The `git log` command visualizes history. By default, it shows a flattened
-version, which hides the graph structure. If you use a command like `git log
---all --graph --decorate`, it will show you the full version history of the
-repository, visualized in graph form.
+Команда `git log` визуализирует историю. По дефолту это плоская версия, скрывающая
+графовую структуру. Если Вы используете команду `git log --all --graph --decorate`,
+она покажет полную версию репозитория в графовом представлении.
 
 ```console
 $ git log --all --graph --decorate
@@ -335,9 +332,9 @@ $ git log --all --graph --decorate
       Initial commit
 ```
 
-This doesn't look all that graph-like, because it only contains a single node.
-Let's make some more changes, author a new commit, and visualize the history
-once more.
+Сейчас это не выглядит как граф, так как содержит всего один узел. Давайте 
+произведем еще какие-нибудь изменения, создадим коммит, и визуализируем историю
+еще раз.
 
 ```console
 $ echo "another line" >> hello.txt
